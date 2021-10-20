@@ -198,20 +198,7 @@
 
       <!-- ***** Clients ***** -->
 
-      <section class="client" id="clients">
-        <!-- <div class="row">
-        <h2>Clients</h2>
-        <div class="client__logos">
-          Add logos of the clients or companies you'have worked with.
-          <img src="./images/ronjones.png" class="client__logo" alt="Company 2" />
-          <img src="./images/goldengrid.png" class="client__logo" alt="Company 3" />
-          <img src="./images/bullseye.png" class="client__logo" alt="Company 1" />
-          <img src="./images/mighty-furnitures.png" class="client__logo" alt="Company 1" />
-          <img src="./images/fastlane.png" class="client__logo" alt="Company 3" />
-          <img src="./images/chippy.png" class="client__logo" alt="Company 1" />
-        </div>
-      </div> -->
-      </section>
+
 
       <!-- ***** About ***** -->
 
@@ -222,10 +209,7 @@
             <div class="about__text">
               <!-- Replace the below paragraph with info about yourself -->
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id
-                nostrum illo harum blanditiis, tenetur eum suscipit cupiditate
-                in vel, ex quam quidem quos mollitia labore aut sunt eius
-                ratione molestiae fuga veniam facere similique voluptate.
+               I am an enthusiastic software developer that has a passion for writing code and simplify my day to day life with code. I love learning new concepts and try things that I am not used to. I finished an education in software development and I have done som internships where I had the role as frontend dev in vue js.
               </p>
               <!-- Provide a link to your resume -->
               <a href="#" class="btn">My Resume</a>
@@ -233,11 +217,7 @@
 
             <div class="about__photo-container">
               <!-- Add a nice photo of yourself -->
-              <img
-                class="about__photo"
-                src="./images/syed-ali-hussnain.jpg"
-                alt=""
-              />
+
             </div>
           </div>
         </div>
@@ -259,7 +239,7 @@
             me is via an email.
           </p>
           <!-- Replace the email with yours -->
-          <a href="mailto:you@example.com" class="btn">you@example.com</a>
+          <a href="maltinimalmo@gmail.com" class="btn">maltinimalmo@gmail.com</a>
         </div>
       </div>
     </section>
@@ -283,10 +263,7 @@
             </a>
           </li>
           <li class="footer__social-link-item">
-            <a
-              href="https://codepen.io/nisar_hassan"
-              title="Link to Codepen Profile"
-            >
+
               <img
                 src="./images/codepen.svg"
                 class="footer__social-image"
@@ -307,10 +284,7 @@
         </ul>
 
         <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
-        <p>
-          &copy; 2020 - Template designed & developed by
-          <a href="https://nisar.dev" class="link">Nisar</a>.
-        </p>
+
         <div class="footer__github-buttons"></div>
       </div>
     </footer>
