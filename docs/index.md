@@ -1,4 +1,4 @@
-<!-- 
+<!--
   Hello 😊.
 
   This template is designed and developed by Nisar Hassan Naqvi
@@ -31,6 +31,7 @@
       content="Maltin Coku, Vue,Css,HTML,Node.js,Git,webscraping,mongoose"
     />
     <link rel="stylesheet" href="index.css" />
+
   </head>
 
   <body>
@@ -322,5 +323,6 @@
       />
     </a>
     <script src="./index.js"></script>
+
   </body>
 </html>
