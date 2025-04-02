@@ -1,14 +1,35 @@
 export async function postProject(data) {
-    
+  try {
+    const res = await fetch(`http://localhost:8000/api/projects/create/`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer mPUA8X6hoyYFY4PtTs1tIljwS6HWM7`, // Don't set "Content-Type" manually for FormData
+      },
+      body: data, // FormData object
+    });
+
+    if (!res.ok) {
+      const message = `An error has occurred: ${res.status} - ${res.statusText}`;
+      throw new Error(message);
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error("Error posting project:", err.message);
+    throw err;
+  }
+}
+
+
+  export async function getMyProjects() {
     try {
-      console.log("post")
-      const res = await fetch(`http://127.0.0.1:8000/api/todos/todos/`, {
-        method: "POST", // Use uppercase for HTTP method for consistency
+      console.log("Fetching projects...");
+      const res = await fetch('http://localhost:8000/api/pakistan/', {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "bearer-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNjE4MDIxLCJpYXQiOjE3MzM2MTQ0MjEsImp0aSI6ImU3MzM5NmQ4MjAxZjRjYmZhODRhYjRkMjU2YjJlOTA5IiwidXNlcl9pZCI6MTF9.q2R0kXqttcLOolEqRoB9rDRiKvKWN2FX-N7HDKjhsp", // Replace with dynamic token if needed
+           Authorization: `Bearer mPUA8X6hoyYFY4PtTs1tIljwS6HWM7`
         },
-        body: JSON.stringify(data), // Pass the `data` parameter
       });
   
       if (!res.ok) {
@@ -16,11 +37,33 @@ export async function postProject(data) {
         throw new Error(message);
       }
   
-      const todos = await res.json();
-      return todos; // Return the parsed response
+      const projects = await res.json();
+      return projects;
     } catch (err) {
-      console.error("Error posting project:", err.message); // Log specific error
-      throw err; // Re-throw the error if the calling function needs to handle it
+      console.error("Error fetching projects:", err.message);
+      throw err;
+    }
+  }
+  export async function getProjects() {
+    try {
+      console.log("Fetching projects...");
+      const res = await fetch('http://localhost:8000/api/projects/public', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!res.ok) {
+        const message = `An error has occurred: ${res.status} - ${res.statusText}`;
+        throw new Error(message);
+      }
+  
+      const projects = await res.json();
+      return projects;
+    } catch (err) {
+      console.error("Error fetching projects:", err.message);
+      throw err;
     }
   }
   

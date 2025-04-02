@@ -1,42 +1,52 @@
 "use client";
 import React, { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import  {postProject} from "@/app/api/projects";
-import axios from 'axios';
-const AddProjectForm = () => {
+import { useMutation } from "@tanstack/react-query";
+import { postProject } from "@/app/api/projects";
 
+const AddProjectForm = () => {
   const [formData, setFormData] = useState({
-     
-   
     title: "",
-    image: "",
     project_description: "",
     tags: "",
     link_url: "",
     github_url: "",
     completed: false,
   });
-  
-  const queryClient = useQueryClient();
-  const mutation = useMutation({ mutationFn: postProject })
 
-  // Define the mutation for adding a project
-  const onCreateTodo = (e) => {
-    e.preventDefault()
-    mutation.mutate({ ...formData })
-  }
+  const [imageFile, setImageFile] = useState(null); // Store image file separately
 
-  const handleChange = e => {
-    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value
+  const mutation = useMutation({ mutationFn: postProject });
+
+  const handleChange = (e) => {
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+      [e.target.name]: value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]); // Store selected file
+  };
+
+  const onCreateProject = (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]); // Append text fields
+    });
+
+    if (imageFile) {
+      data.append("image", imageFile); // Append file
+    }
+
+    mutation.mutate(data);
+  };
 
   return (
     <form
-      onSubmit={onCreateTodo}
+      onSubmit={onCreateProject}
       className="bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-xl mx-auto"
     >
       <h2 className="text-2xl font-bold mb-6 text-white">Add New Project</h2>
@@ -66,22 +76,21 @@ const AddProjectForm = () => {
         />
       </label>
 
-      {/* Image Field */}
+      {/* Image Upload Field */}
       <label className="block mb-4">
-        <span className="text-white">Image URL</span>
+        <span className="text-white">Upload Image</span>
         <input
-          type="text"
+          type="file"
           name="image"
-          value={formData.image}
-          onChange={handleChange}
-          placeholder="Project Image URL"
+          accept="image/*"
+          onChange={handleFileChange}
           className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md"
         />
       </label>
 
       {/* Tags Field */}
       <label className="block mb-4">
-        <span className="text-white">Tags </span>
+        <span className="text-white">Tags</span>
         <input
           type="text"
           name="tags"
