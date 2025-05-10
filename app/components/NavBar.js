@@ -28,9 +28,9 @@ export default function NavBar() {
   return (
     <header className="sticky top-0 z-10 flex items-left justify-between px-6 py-4 bg-gray-900 text-white shadow-md">
 
-      {/* Logo */}
+      {/* Logo with "Jobs and Portfolios" */}
       <Link href="/projectdashboard">
-        <div className="flex items-right gap-2 cursor-pointer">
+        <div className="flex items-center gap-2 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -39,34 +39,33 @@ export default function NavBar() {
           >
             <path d="M3 9.915V22h7v-7h4v7h7V9.915L12 3 3 9.915zM12 1l10 8.5V23h-9v-7h-2v7H2V9.5L12 1z" />
           </svg>
-          <span className="text-2xl font-semibold tracking-wide">Dashboard</span>
+          <span className="text-2xl font-semibold tracking-wide">Jobs & Portfolios</span>
         </div>
       </Link>
 
-{/* Search Field */}
-<div className="relative mx-5 flex grow">
-  <input
-    type="text"
-    placeholder="Search..."
-    className="w-full py-2 px-4 rounded-md border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-    style={{ minWidth: '200px', maxWidth: '400px' }}
-  />
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="absolute top-1/2 right-3 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"
-    />
-  </svg>
-</div>
-
+      {/* Search Field */}
+      <div className="relative mx-5 flex grow">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="w-full py-2 px-4 rounded-md border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          style={{ minWidth: '200px', maxWidth: '400px' }}
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="absolute top-1/2 right-3 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </div>
 
       {/* Navigation */}
       <nav className="flex items-center gap-8 font-medium">
@@ -77,45 +76,19 @@ export default function NavBar() {
           </div>
         </Link>
 
-        {/* Projects Dropdown */}
-        <div className="relative">
-          <button
-            className="py-2 px-4 border border-gray-700 rounded-md hover:bg-white hover:text-black transition duration-300"
-            onClick={toggleProjectsDropdown}
-          >
-            Projects
-          </button>
-          {projectsDropdownOpen && (
-            <div
-              className="absolute top-full left-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-10"
-              onMouseLeave={() => setProjectsDropdownOpen(false)}
-            >
-              <Link href="/projects/infosec">
-                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
-                  Infosec
-                </div>
-              </Link>
-              <Link href="/projects/devops">
-                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
-                  DevOps
-                </div>
-              </Link>
-              <Link href="/projects/assembly">
-                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
-                  Assembly
-                </div>
-              </Link>
-              <Link href="/projects/programming">
-                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
-                  Programming
-                </div>
-              </Link>
-            </div>
-          )}
-        </div>
+        {/* My Projects Link */}
+        <Link href="/my-projects">
+          <div className="relative py-2 px-4 border border-gray-700 rounded-md hover:bg-white hover:text-black transition duration-300">
+            My projects
+          </div>
+        </Link>
 
-        {/* Contact Link */}
-       
+        {/* Jobs Link */}
+        <Link href="/jobdashboard">
+          <div className="relative py-2 px-4 border border-gray-700 rounded-md hover:bg-white hover:text-black transition duration-300">
+            Jobs
+          </div>
+        </Link>
 
         {/* Create Button */}
         <Link href="/add-project">
@@ -150,6 +123,16 @@ export default function NavBar() {
               <Link href="/settings">
                 <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
                   Settings
+                </div>
+              </Link>
+              <Link href="/my-projects">
+                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
+                  My projects
+                </div>
+              </Link>
+              <Link href="/recruit/jobs">
+                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
+                  Recruiter
                 </div>
               </Link>
               <Link href="/logout">
