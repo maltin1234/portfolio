@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProjectCard = ({ project }) => {
   if (!project) return null;
@@ -40,7 +41,7 @@ const ProjectCard = ({ project }) => {
         )}
 
         {/* Links */}
-        <div className="flex gap-4 mt-4">
+        <div className="flex flex-wrap gap-4 mt-4 items-center">
           {project.github_url && (
             <a
               href={project.github_url}
@@ -61,6 +62,13 @@ const ProjectCard = ({ project }) => {
               Website
             </a>
           )}
+       
+            <Link href={`/profiles/1`}>
+              <button className="bg-green-600 text-white px-3 py-1 rounded-md text-sm hover:bg-green-500 transition">
+                View Profile
+              </button>
+            </Link>
+         
         </div>
       </div>
     </div>
