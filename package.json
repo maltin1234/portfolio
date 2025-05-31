@@ -16,6 +16,7 @@
     "axios": "^1.7.9",
     "canvas-confetti": "^1.9.3",
     "file-loader": "^6.2.0",
+    "lucide-react": "^0.511.0",
     "next": "^14.2.14",
     "next-auth": "^4.24.11",
     "pg": "^8.13.0",
