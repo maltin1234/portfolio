@@ -3,11 +3,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import { useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function NavBar() {
+ 
   const pathname = usePathname();
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const { data: session } = useSession();
 
   const handleContactClick = () => {
     confetti({
@@ -77,12 +80,13 @@ export default function NavBar() {
         </Link>
 
         {/* My Projects Link */}
+         {session && (
         <Link href="/my-projects">
           <div className="relative py-2 px-4 border border-gray-700 rounded-md hover:bg-white hover:text-black transition duration-300">
             My projects
           </div>
         </Link>
-
+)}
         {/* Jobs Link */}
         <Link href="/jobdashboard">
           <div className="relative py-2 px-4 border border-gray-700 rounded-md hover:bg-white hover:text-black transition duration-300">
@@ -90,12 +94,14 @@ export default function NavBar() {
           </div>
         </Link>
 
-        {/* Create Button */}
+        {/* Create Button — only visible if signed in */}
+      {session && (
         <Link href="/add-project">
           <button className="py-2 px-6 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500 transition duration-300">
             Create
           </button>
         </Link>
+         )}
 
         {/* Profile Dropdown */}
         <div className="relative">
@@ -135,10 +141,13 @@ export default function NavBar() {
                   Recruiter
                 </div>
               </Link>
-              <Link href="/logout">
-                <div className="p-3 hover:bg-gray-700 hover:text-white transition duration-300">
+              <Link href="/">
+                <button
+                  onClick={() => signOut()}
+                  className="w-full text-left p-3 hover:bg-gray-700 hover:text-white transition duration-300"
+                >
                   Logout
-                </div>
+                </button>
               </Link>
             </div>
           )}

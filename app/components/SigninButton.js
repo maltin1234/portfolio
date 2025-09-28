@@ -27,7 +27,7 @@ export default function SigninButton() {
             Start by setting up your project portfolio to showcase your work.
           </p>
           <Link
-            href="/portfolio/setup"
+            href="/profiles/create"
             className="inline-block w-full mb-4 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Set Up Portfolio
